@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog Standard — Product Title Standardization for Shopify</title>
+<meta name="description" content="Product title standardization for Shopify catalogs. Catalog Standard reviews naming inconsistencies, applies approved title rules, and flags decisions that need merchant input.">
+<link rel="canonical" href="https://catalogstandard.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Catalog Standard">
+<meta property="og:title" content="Catalog Standard — Product Title Standardization for Shopify">
+<meta property="og:description" content="One standard for every product title in your catalog. $390 one-time, up to 500 product titles. Decisions that need your judgment are flagged instead of guessed.">
+<meta property="og:url" content="https://catalogstandard.com/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F7F5F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317191C'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='30' fill='%23F7F5F0'%3ECS%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://catalogstandard.com/#business",
+  "name": "Catalog Standard",
+  "legalName": "V M Silva Soluções Administrativas Ltda.",
+  "taxID": "51.364.944/0001-89",
+  "url": "https://catalogstandard.com/",
+  "email": "victor@catalogstandard.com",
+  "description": "Product title standardization for Shopify catalogs. Catalog Standard reviews naming inconsistencies, applies approved title rules, and flags decisions that need merchant input.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R Viaza, 400, Apt 1108, Jardim Aeroporto",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "postalCode": "04633-050",
+    "addressCountry": "BR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "victor@catalogstandard.com",
+    "availableLanguage": "en"
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "name": "Product Title Standardization",
+    "description": "Review and standardization of up to 500 Shopify product titles: catalog review, proposed naming standard, merchant-decision flags, application of approved rules, final review.",
+    "price": "390",
+    "priceCurrency": "USD",
+    "url": "https://catalogstandard.com/#pricing",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Product Title Standardization",
+      "serviceType": "Catalog QA for Shopify",
+      "provider": { "@id": "https://catalogstandard.com/#business" }
+    }
+  }
+}
+</script>
+<style>
+:root{
+  --ink:#17191C;
+  --ink-2:#2B2E34;
+  --paper:#F7F5F0;
+  --paper-2:#EFECE3;
+  --paper-3:#E7E3D8;
+  --slate:#667085;
+  --green:#2F6F54;
+  --green-soft:#DDEBE2;
+  --amber:#A56A13;
+  --amber-soft:#F3E6D0;
+  --red:#9B2C2C;
+  --rule:#D9D5CC;
+  --rule-2:#BFB9AC;
+  --head:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:Georgia,"Times New Roman",Times,serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+  --rail:168px;
+  --gutter:clamp(18px,3.6vw,56px);
+  --max:1280px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+p,h1,h2,h3,h4,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+mark{background:none;color:inherit}
+
+/* ── type roles ─────────────────────────────── */
+.h{font-family:var(--head);font-weight:700;letter-spacing:-.015em;line-height:.98;text-wrap:balance}
+.h-1{font-size:clamp(44px,6.4vw,92px)}
+.h-2{font-size:clamp(34px,4.6vw,60px)}
+.h-3{font-family:var(--head);font-weight:600;font-size:clamp(22px,2.2vw,28px);line-height:1.1;letter-spacing:-.015em}
+.lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+.lab.ink{color:var(--ink)}
+.lab.green{color:var(--green)}
+.lab.amber{color:var(--amber)}
+.lede{font-size:clamp(18px,1.4vw,21px);line-height:1.45;max-width:34em}
+.body{max-width:58ch}
+.body p+p{margin-top:14px}
+.muted{color:var(--slate)}
+.mono{font-family:var(--mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums}
+
+/* ── buttons ────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;
+  font-family:var(--head);font-weight:500;font-size:15px;letter-spacing:.005em;
+  text-decoration:none;border:1px solid var(--ink);border-radius:2px;
+  transition:background .15s ease,color .15s ease;
+}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:var(--ink-2)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--paper-2)}
+.btn .k{font-family:var(--mono);font-size:11px;opacity:.7;letter-spacing:.06em}
+
+/* ── shell ──────────────────────────────────── */
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink)}
+.nav .shell{display:grid;grid-template-columns:var(--rail) 1fr auto;align-items:center;height:60px;gap:24px}
+.wordmark{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav-mid{display:flex;align-items:center;gap:26px}
+.nav-mid .cat{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);padding-right:26px;border-right:1px solid var(--rule)}
+.nav-mid a:not(.cat){font-family:var(--head);font-size:14px;font-weight:500;text-decoration:none;color:var(--ink)}
+.nav-mid a:not(.cat):hover{text-decoration:underline;text-underline-offset:4px}
+.nav .btn{height:38px;padding:0 16px;font-size:14px}
+.nav .btn.btn-ink{color:var(--paper)}
+@media (max-width:900px){.nav .shell{grid-template-columns:1fr auto}.nav-mid{display:none}}
+
+/* spec strip: document header */
+.spec{border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.spec .shell{display:grid;grid-template-columns:var(--rail) 1fr;gap:24px;min-height:38px;align-items:center}
+.spec .lab{white-space:nowrap}
+.spec-items{display:flex;flex-wrap:wrap;gap:6px 28px;font-family:var(--mono);font-size:12px;color:var(--ink);padding-block:8px}
+.spec-items span b{font-weight:500;color:var(--slate);margin-right:8px}
+@media (max-width:900px){.spec .shell{grid-template-columns:1fr}.spec .lab{display:none}}
+
+/* section grid with left rail */
+.sec{border-bottom:1px solid var(--rule);padding-block:clamp(48px,7vw,96px)}
+.sec .shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(20px,3vw,48px)}
+.rail{position:sticky;top:76px;align-self:start;display:grid;gap:6px}
+.rail .idx{font-family:var(--mono);font-size:12px;color:var(--ink);letter-spacing:.04em}
+.rail .name{font-family:var(--head);font-weight:500;font-size:14px;color:var(--slate);letter-spacing:.01em}
+.rail::before{content:"";display:block;width:24px;height:1px;background:var(--ink);margin-bottom:6px}
+.content{display:grid;gap:clamp(28px,3.5vw,48px);min-width:0}
+@media (max-width:900px){.sec .shell{grid-template-columns:1fr}.rail{position:static;grid-auto-flow:column;justify-content:start;gap:14px;align-items:baseline}.rail::before{display:none}}
+
+/* ── hero ───────────────────────────────────── */
+.hero{padding-block:clamp(40px,6vw,80px) 0;border-bottom:0}
+.hero .shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:end}
+.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);gap:clamp(24px,4vw,64px);align-items:end}
+.hero-top .h-1{max-width:13ch}
+.hero-side{display:grid;gap:18px;padding-bottom:6px}
+.hero-side .lede{font-size:18px;line-height:1.45}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:900px){.hero .shell{grid-template-columns:1fr}.hero-top{grid-template-columns:1fr}.hero .rail{display:none}}
+
+/* ledger: the deliverable */
+.ledger-wrap{grid-column:1 / -1;margin-top:clamp(36px,5vw,64px);border-top:1px solid var(--ink)}
+.ledger-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding:12px 0}
+.ledger-head .lab{color:var(--ink)}
+.ledger-head .meta{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.ledger{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:14px;line-height:1.5}
+.ledger th{font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);text-align:left;padding:10px 14px 10px 0;border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2)}
+.ledger td{vertical-align:top;padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.ledger tr:last-child td{border-bottom:1px solid var(--ink)}
+.ledger .c-n{width:56px;color:var(--slate);font-size:12px;padding-top:16px}
+.ledger .c-cur{width:30%;color:var(--slate)}
+.ledger .c-pro{width:38%}
+.ledger .c-st{width:170px;padding-right:0}
+.ledger .c-cur .del{background:var(--paper-3);color:var(--ink);box-decoration-break:clone;padding:1px 2px;border-radius:2px;text-decoration:line-through;text-decoration-color:var(--slate)}
+.ledger .c-pro .add{background:var(--green-soft);color:var(--green);padding:1px 2px;border-radius:2px;box-decoration-break:clone}
+.ledger .c-pro .q{font-family:var(--body);font-size:15.5px;line-height:1.4;color:var(--ink)}
+.ledger .c-pro .q::before{content:"?";font-family:var(--mono);color:var(--amber);margin-right:8px;font-weight:500}
+.st{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.st::before{content:"";width:8px;height:8px;border-radius:1px}
+.st.ok{color:var(--green)}.st.ok::before{background:var(--green)}
+.st.rev{color:var(--amber)}.st.rev::before{background:var(--amber)}
+.st.keep{color:var(--slate)}.st.keep::before{background:var(--rule-2)}
+.ledger-foot{display:flex;flex-wrap:wrap;gap:8px 28px;padding:12px 0 0;font-family:var(--mono);font-size:12px;color:var(--slate)}
+@media (max-width:760px){
+  .ledger thead{display:none}
+  .ledger,.ledger tbody,.ledger tr,.ledger td{display:block;width:auto}
+  .ledger tr{padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:4px 10px}
+  .ledger td{border:0;padding:0}
+  .ledger .c-n{grid-row:1 / span 3;padding-top:2px}
+  .ledger .c-cur,.ledger .c-pro,.ledger .c-st{grid-column:2}
+  .ledger .c-cur::before{content:"current";display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-bottom:2px}
+  .ledger .c-pro::before{content:"proposed";display:block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:2px;margin-top:6px}
+  .ledger tr.flag .c-pro::before{content:"flag";color:var(--amber)}
+  .ledger .c-st{margin-top:8px}
+  .ledger tr:last-child{border-bottom:1px solid var(--ink)}
+}
+
+/* ── problem ────────────────────────────────── */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:start}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.tally{border-top:1px solid var(--ink)}
+.tally li{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:15px}
+.tally li em{font-style:normal;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate)}
+.tally-cap{margin-top:14px;font-size:15.5px;color:var(--slate);font-style:italic}
+.sources{display:grid;gap:8px;padding-top:6px}
+.sources li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:17px}
+.sources li::before{content:"·";font-family:var(--mono);color:var(--slate)}
+
+/* ── what we do ─────────────────────────────── */
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.four>li{padding:22px 22px 26px 0;border-right:1px solid var(--rule);display:grid;gap:12px;align-content:start}
+.four>li+li{padding-left:22px}
+.four>li:last-child{border-right:0}
+.four .lab{color:var(--ink)}
+.four p{font-size:16.5px;line-height:1.45}
+@media (max-width:900px){.four{grid-template-columns:1fr 1fr}.four>li:nth-child(2){border-right:0}.four>li:nth-child(3){padding-left:0}.four>li:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media (max-width:520px){.four{grid-template-columns:1fr}.four>li{border-right:0;padding-left:0}.four>li+li{border-top:1px solid var(--rule)}}
+
+/* ── how it works: timeline ─────────────────── */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative;padding-top:18px}
+.steps::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--ink)}
+.step{display:grid;gap:12px;padding:0 22px 0 0;position:relative;align-content:start}
+.step+.step{padding-left:22px;border-left:1px solid var(--rule)}
+.step::before{content:"";position:absolute;top:-22px;left:0;width:9px;height:9px;background:var(--paper);border:1px solid var(--ink);border-radius:50%}
+.step+.step::before{left:-5px}
+.step.gate::before{background:var(--amber);border-color:var(--amber)}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--slate)}
+.step h3{font-family:var(--head);font-weight:600;font-size:21px;line-height:1.1;letter-spacing:-.015em}
+.step p{font-size:16px;line-height:1.45}
+.step .gate-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);padding:3px 7px;border-radius:2px;width:max-content}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;padding-top:0;padding-left:26px}
+  .steps::before{left:4px;right:auto;top:0;bottom:0;height:auto;width:1px}
+  .step{padding:0 0 26px 0;border-left:0}
+  .step+.step{padding-left:0;border-left:0}
+  .step::before,.step+.step::before{top:6px;left:-26px}
+}
+
+/* ── flag, don't guess ──────────────────────── */
+.flagsec{background:var(--ink);color:var(--paper);border-bottom:0}
+.flagsec .rail::before{background:var(--paper)}
+.flagsec .rail .idx{color:var(--paper)}
+.flagsec .rail .name{color:#9AA0A9}
+.flagsec .lede{color:#D6D3CB}
+.flagsec .body{color:#C9C6BE}
+.flagsec .h-2{color:var(--paper)}
+.decision{border:1px solid #454A52;display:grid;grid-template-columns:1fr 1fr;font-family:var(--mono)}
+.decision>div{padding:20px 22px;display:grid;gap:10px;align-content:start;border-bottom:1px solid #454A52}
+.decision>div:nth-child(odd){border-right:1px solid #454A52}
+.decision>div:nth-last-child(-n+2){border-bottom:0}
+.decision .lab{color:#9AA0A9}
+.decision .lab.amber{color:#D9A24A}
+.decision .lab.green{color:#7FBF9A}
+.decision .v{font-size:14.5px;line-height:1.55;color:#EDEAE3}
+.decision .v.serif{font-family:var(--body);font-size:17px;line-height:1.4}
+.decision .opts{display:grid;gap:2px}
+.decision .opts span::before{content:"· ";color:#9AA0A9}
+.decision .big{grid-column:1 / -1;border-right:0 !important}
+@media (max-width:640px){.decision{grid-template-columns:1fr}.decision>div:nth-child(odd){border-right:0}.decision>div:nth-last-child(-n+2){border-bottom:1px solid #454A52}.decision>div:last-child{border-bottom:0}}
+
+/* ── scope: in / out ────────────────────────── */
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink)}
+.scope-col{padding:clamp(20px,2.6vw,32px);display:grid;gap:18px;align-content:start}
+.scope-col+.scope-col{border-left:1px solid var(--ink)}
+.scope-col .h-3{max-width:18ch}
+.scope-col p{font-size:16.5px;line-height:1.45}
+.list{display:grid;gap:0;border-top:1px solid var(--rule-2)}
+.list li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:14px}
+.list li::before{font-family:var(--mono);font-size:13px;text-align:center}
+.list.in li::before{content:"+";color:var(--green)}
+.list.out li::before{content:"−";color:var(--slate)}
+.list.out li{color:var(--ink)}
+.scope-note{font-size:14.5px !important;color:var(--slate)}
+@media (max-width:820px){.scope-grid{grid-template-columns:1fr}.scope-col+.scope-col{border-left:0;border-top:1px solid var(--ink)}}
+
+/* ── pricing: order sheet ───────────────────── */
+.order{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,440px);gap:clamp(28px,4vw,72px);align-items:start}
+.sheet{border:1px solid var(--ink);background:#FBFAF7;padding:clamp(22px,2.6vw,32px);display:grid;gap:20px;position:relative}
+.sheet::after{content:"";position:absolute;inset:6px;border:1px solid var(--rule);pointer-events:none}
+.sheet .lab{color:var(--ink)}
+.sheet dl{display:grid;gap:0;margin:0}
+.sheet .row{display:flex;align-items:baseline;gap:8px;padding:9px 0;font-family:var(--mono);font-size:14px}
+.sheet .row dt{color:var(--slate);white-space:nowrap}
+.sheet .row .dots{flex:1;border-bottom:1px dotted var(--rule-2);transform:translateY(-4px)}
+.sheet .row dd{margin:0;text-align:right;white-space:nowrap}
+.sheet .row.total{border-top:1px solid var(--ink);margin-top:6px;padding-top:14px}
+.sheet .row.total dt{color:var(--ink);font-weight:500}
+.sheet .row.total dd{font-family:var(--head);font-weight:600;font-size:40px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+.sheet .row.total dd small{font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--slate);margin-left:8px}
+.sheet .inc{display:grid;gap:7px;padding-top:4px}
+.sheet .inc li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-family:var(--mono);font-size:13.5px}
+.sheet .inc li::before{content:"+";color:var(--green)}
+.sheet .btn{justify-self:start}
+.sheet .pay{font-size:14px;color:var(--slate);line-height:1.45}
+.over{border-left:2px solid var(--ink);padding-left:18px;display:grid;gap:6px;max-width:52ch}
+.over strong{font-family:var(--head);font-weight:600;font-size:18px}
+.over p{font-size:16.5px}
+@media (max-width:900px){.order{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.sheet .row dd{white-space:normal;max-width:60%}}
+
+/* ── faq ────────────────────────────────────── */
+.faq{border-top:1px solid var(--ink);max-width:880px}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr 24px;gap:16px;align-items:baseline;padding:18px 0;font-family:var(--head);font-weight:600;font-size:clamp(19px,2vw,24px);line-height:1.15;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .n{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--slate);letter-spacing:.04em}
+.faq summary .x{font-family:var(--mono);font-weight:400;font-size:18px;color:var(--slate);text-align:right;transition:transform .2s ease}
+.faq details[open] summary .x{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px 60px;max-width:66ch;font-size:17px;line-height:1.5}
+@media (max-width:600px){.faq summary{grid-template-columns:36px 1fr 20px}.faq .a{padding-left:52px}}
+
+/* ── contact ────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:clamp(28px,4vw,72px);align-items:end}
+.sig{border-top:1px solid var(--ink);padding-top:14px;display:grid;gap:3px;font-family:var(--mono);font-size:13.5px}
+.sig .nm{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+.sig a{text-decoration:none;border-bottom:1px solid var(--rule-2)}
+.sig a:hover{border-color:var(--ink)}
+.contact-actions{display:grid;gap:12px;justify-items:start}
+.contact-actions .hint{font-size:15px;color:var(--slate);max-width:32ch;line-height:1.45}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+
+/* ── footer: colophon ───────────────────────── */
+footer{border-top:1px solid var(--ink);padding-block:40px 32px;font-size:14px;color:var(--slate)}
+footer .shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(20px,3vw,48px)}
+.colophon{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px}
+.colophon .brand{display:grid;gap:6px}
+.colophon .brand a{text-decoration:none;color:var(--ink)}
+.colophon .legal{display:grid;gap:10px;font-family:var(--mono);font-size:12.5px;line-height:1.55}
+.colophon .legal p,.colophon .legal address{font-style:normal}
+.colophon .legal .op{color:var(--ink)}
+.foot-bottom{grid-column:1 / -1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:22px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12px}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 22px}
+.foot-links button{color:var(--ink);border-bottom:1px solid transparent;font-family:var(--mono);font-size:12px}
+.foot-links button:hover{border-color:var(--ink)}
+.tm{grid-column:1 / -1;font-family:var(--mono);font-size:11.5px;line-height:1.55;max-width:80ch}
+@media (max-width:900px){footer .shell{grid-template-columns:1fr}footer .rail{display:none}.colophon{grid-template-columns:1fr}}
+
+/* ── legal dialogs ──────────────────────────── */
+dialog.legal{width:min(760px,calc(100% - 32px));max-height:min(88vh,920px);border:1px solid var(--ink);border-radius:0;padding:0;background:#FBFAF7;color:var(--ink);box-shadow:0 40px 80px -40px rgba(23,25,28,.5)}
+dialog.legal::backdrop{background:rgba(23,25,28,.6)}
+.legal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 26px;border-bottom:1px solid var(--ink);position:sticky;top:0;background:#FBFAF7}
+.legal-head h2{font-family:var(--head);font-weight:600;font-size:24px;letter-spacing:-.015em}
+.legal-head button{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--rule-2)}
+.legal-head button:hover{background:var(--paper)}
+.legal-body{padding:22px 26px 32px;font-size:16px;line-height:1.55;display:grid;gap:12px}
+.legal-body h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-top:10px}
+.legal-body ul{padding-left:18px;list-style:disc;display:grid;gap:6px}
+.legal-body .eff{font-family:var(--mono);font-size:12px;color:var(--slate)}
+
+/* ── motion ─────────────────────────────────── */
+@keyframes sweep{from{background-size:0% 100%}to{background-size:100% 100%}}
+.ledger .c-pro .add{background-image:linear-gradient(var(--green-soft),var(--green-soft));background-color:transparent;background-repeat:no-repeat;background-size:100% 100%}
+.js .ledger .c-pro .add{animation:sweep .5s ease-out both}
+.js .ledger tr:nth-child(1) .add{animation-delay:.25s}
+.js .ledger tr:nth-child(2) .add{animation-delay:.4s}
+.js .ledger tr:nth-child(3) .add{animation-delay:.55s}
+.js .ledger tr:nth-child(4) .add{animation-delay:.7s}
+.js .ledger tr:nth-child(5) .add{animation-delay:.85s}
+.js .ledger tr:nth-child(6) .add{animation-delay:1s}
+@media (prefers-reduced-motion:reduce){.js .ledger .c-pro .add{animation:none}}
+</style>
+</head>
+<body>
+
+<a class="sr" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="shell">
+    <a class="wordmark" href="#top">Catalog Standard</a>
+    <nav class="nav-mid" aria-label="Page sections">
+      <span class="cat">Catalog QA for Shopify</span>
+      <a href="#how">How it works</a>
+      <a href="#scope">Scope</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-ink" href="mailto:victor@catalogstandard.com?subject=Product%20Title%20Standardization">Get started</a>
+  </div>
+</header>
+
+<div class="spec" aria-label="Service summary">
+  <div class="shell">
+    <span class="lab">Service sheet</span>
+    <div class="spec-items">
+      <span><b>Service</b>Product Title Standardization</span>
+      <span><b>Scope</b>up to 500 product titles</span>
+      <span><b>Price</b>US$390 · one-time</span>
+      <span><b>Contact</b>victor@catalogstandard.com</span>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 00</span><span class="name">Title audit</span></div>
+    <div class="hero-top">
+      <h1 id="hero-h" class="h h-1">One standard for every product title in your catalog.</h1>
+      <div class="hero-side">
+        <p class="lede">Catalog Standard reviews your Shopify product titles, identifies inconsistencies, applies a consistent naming system, and flags anything that needs your judgment instead of guessing.</p>
+        <div class="cta">
+          <a class="btn btn-ink" href="mailto:victor@catalogstandard.com?subject=Product%20Title%20Standardization">Get started</a>
+          <a class="btn btn-line" href="#how">How it works <span class="k">↓</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ledger-wrap">
+      <div class="ledger-head">
+        <span class="lab">Catalog review · sample rows</span>
+        <span class="meta">representative titles · not from a customer store</span>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="ledger" aria-label="Sample title review: current title, proposed title or flag, and status">
+        <thead><tr><th class="c-n">#</th><th class="c-cur">Current</th><th class="c-pro">Proposed / flag</th><th class="c-st">Status</th></tr></thead>
+        <tbody>
+          <tr><td class="c-n num">0041</td><td class="c-cur">Linen Shirt<mark class="del">-</mark>Navy</td><td class="c-pro">Linen Shirt<mark class="add"> - </mark>Navy</td><td class="c-st"><span class="st ok">Ready to change</span></td></tr>
+          <tr class="flag"><td class="c-n num">0042</td><td class="c-cur">Signature Tote Navy <mark class="del">NPT</mark></td><td class="c-pro"><span class="q">What does “NPT” represent? Internal code, material, or supplier tag?</span></td><td class="c-st"><span class="st rev">Needs your input</span></td></tr>
+          <tr><td class="c-n num">0043</td><td class="c-cur">Harbor &amp; Pine<mark class="del">-</mark> Willow Stone Bracelet</td><td class="c-pro">Harbor &amp; Pine<mark class="add"> -</mark> Willow Stone Bracelet</td><td class="c-st"><span class="st ok">Ready to change</span></td></tr>
+          <tr><td class="c-n num">0044</td><td class="c-cur"><mark class="del">BOYFRIEND DENIM JACKET</mark> - Light Wash</td><td class="c-pro"><mark class="add">Boyfriend Denim Jacket</mark> - Light Wash</td><td class="c-st"><span class="st ok">Ready to change</span></td></tr>
+          <tr class="flag"><td class="c-n num">0045</td><td class="c-cur">Riley Midi Dress <mark class="del">by</mark> Maren &amp; Co</td><td class="c-pro"><span class="q">Brand appears as “by Brand”, “Brand -” and “Brand” across the catalog. Which convention should the store use?</span></td><td class="c-st"><span class="st rev">Needs your input</span></td></tr>
+          <tr><td class="c-n num">0046</td><td class="c-cur">Wool Scarf - Camel</td><td class="c-pro">Wool Scarf - Camel</td><td class="c-st"><span class="st keep">No change</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="ledger-foot">
+        <span>■ green — formatting, applied after your approval of the standard</span>
+        <span>■ amber — business decision, flagged once, applied everywhere</span>
+        <span>■ grey — already consistent, left as is</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="sec" aria-labelledby="problem-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 01</span><span class="name">The problem</span></div>
+    <div class="content">
+      <h2 id="problem-h" class="h h-2">One title is easy to fix. Five hundred titles are a system.</h2>
+      <div class="two">
+        <div class="body">
+          <p class="lede">Catalogs pick up inconsistencies over time. None of them is serious on its own. Together they turn into a review job nobody has scheduled: find every variation, decide which one is correct, and apply that decision everywhere without changing anything that should stay as it is.</p>
+          <ul class="sources" aria-label="Where inconsistencies come from" style="margin-top:22px">
+            <li>Manual entry across seasons and staff</li>
+            <li>Multiple suppliers with their own naming conventions</li>
+            <li>Imported data that kept its original formatting</li>
+            <li>Merchandising changes applied to some listings and not others</li>
+            <li>Years of ordinary catalog maintenance</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="tally" aria-label="Six ways the same product can be titled">
+            <li>Brand - Product<em>separator</em></li>
+            <li>Brand Product<em>no separator</em></li>
+            <li>Product by Brand<em>brand placement</em></li>
+            <li>PRODUCT NAME<em>capitalization</em></li>
+            <li>Product Name - Color<em>attribute format</em></li>
+            <li>Product Name-Color<em>spacing</em></li>
+          </ul>
+          <p class="tally-cap">The problem is not the punctuation. The problem is deciding the standard and applying it consistently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="sec" aria-labelledby="what-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 02</span><span class="name">The service</span></div>
+    <div class="content">
+      <div class="two">
+        <h2 id="what-h" class="h h-2">We take ownership of the title review, not just the edits.</h2>
+        <p class="lede">Small inconsistencies are easy to fix one at a time. Finding them across hundreds of listings, deciding the correct rule, applying it consistently, and knowing when not to change something is the actual work. That is what you are handing off.</p>
+      </div>
+      <ul class="four">
+        <li><span class="lab">We review</span><p>We review the product titles in scope and identify repeated inconsistencies, formatting differences and naming patterns.</p></li>
+        <li><span class="lab">We define the standard</span><p>Clear patterns are standardized. Decisions that depend on your business rules are surfaced for your input.</p></li>
+        <li><span class="lab">We apply it consistently</span><p>Approved rules are applied across the titles in scope, the same way every time.</p></li>
+        <li><span class="lab">We verify</span><p>The final result is reviewed so the work stays inside the approved title scope.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how" aria-labelledby="how-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 03</span><span class="name">How it works</span></div>
+    <div class="content">
+      <h2 id="how-h" class="h h-2">Five steps, in order. Your decisions come before any change.</h2>
+      <ol class="steps">
+        <li class="step"><span class="n">01</span><h3>Catalog review</h3><p>We review the titles in scope and identify patterns, inconsistencies and exceptions.</p></li>
+        <li class="step"><span class="n">02</span><h3>Standard proposal</h3><p>You see how the naming system will be applied, with current → proposed examples from your own catalog.</p></li>
+        <li class="step gate"><span class="n">03</span><h3>Merchant decisions</h3><p>Anything that requires your business judgment is flagged rather than assumed. You choose the rule once.</p><span class="gate-tag">Your approval gate</span></li>
+        <li class="step"><span class="n">04</span><h3>Title standardization</h3><p>Approved title rules are applied consistently across the agreed scope.</p></li>
+        <li class="step"><span class="n">05</span><h3>Final review</h3><p>The result is checked against the approved scope before completion. The start date, delivery workflow and expected delivery date are confirmed in writing before work begins.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- FLAG, DON'T GUESS -->
+<section class="sec flagsec" aria-labelledby="flag-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 04</span><span class="name">Flag, don’t guess</span></div>
+    <div class="content">
+      <div class="two">
+        <div class="body">
+          <h2 id="flag-h" class="h h-2">We don’t guess what your catalog means.</h2>
+          <p class="lede" style="margin-top:22px">Some differences are clearly formatting. Others are business decisions. When two supplier names, brand-placement rules, abbreviations or internal codes appear in the catalog, Catalog Standard does not invent the answer.</p>
+          <p style="margin-top:14px">We flag the decision once, get your direction, and apply the rule consistently. If it requires your judgment, we flag it instead of guessing.</p>
+        </div>
+        <div class="decision" role="figure" aria-label="Example of a flagged decision">
+          <div class="big"><span class="lab">Current · three conventions in one catalog</span><div class="v opts"><span>Product - Brand</span><span>Product by Brand</span><span>Product Brand</span></div></div>
+          <div><span class="lab amber">Question</span><span class="v serif">Which brand-placement convention should your store use?</span></div>
+          <div><span class="lab">Your call</span><span class="v serif">Choose the rule once.</span></div>
+          <div class="big"><span class="lab green">Catalog Standard</span><span class="v serif">Apply it consistently across every title in scope.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE -->
+<section class="sec" id="scope" aria-labelledby="scope-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 05</span><span class="name">Scope</span></div>
+    <div class="content">
+      <h2 id="scope-h" class="h h-2">Title scope means title scope.</h2>
+      <div class="scope-grid">
+        <div class="scope-col">
+          <span class="lab green">In scope · Product Title Standardization</span>
+          <h3 class="h-3">Up to 500 product titles</h3>
+          <p>Depending on what your catalog contains, the review can cover:</p>
+          <ul class="list in">
+            <li>Capitalization consistency</li>
+            <li>Separator consistency</li>
+            <li>Spacing</li>
+            <li>Duplicate words or tokens</li>
+            <li>Confirmed spelling issues</li>
+            <li>Brand-placement consistency</li>
+            <li>Color and attribute formatting</li>
+            <li>Naming-family consistency</li>
+            <li>Operational artifacts left in titles</li>
+            <li>Merchant-decision flags</li>
+            <li>Final title QA</li>
+          </ul>
+          <p class="scope-note">Categories of review, not a checklist every catalog will need. Your catalog determines which apply.</p>
+        </div>
+        <div class="scope-col">
+          <span class="lab amber">Out of scope · not edited</span>
+          <h3 class="h-3">Everything that is not a title</h3>
+          <p>The current $390 service is specifically for product title standardization. We do not expand the job into unrelated catalog fields without a separate agreement.</p>
+          <ul class="list out">
+            <li>Prices</li>
+            <li>Inventory quantities</li>
+            <li>SKUs</li>
+            <li>Barcodes</li>
+            <li>Product variants</li>
+            <li>Variant structure</li>
+            <li>Product descriptions</li>
+            <li>SEO fields</li>
+            <li>Image alt text</li>
+          </ul>
+          <p class="scope-note">Another field reviewed is a separate scope with its own agreement, never a silent extension of this one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing" aria-labelledby="pricing-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 06</span><span class="name">Pricing</span></div>
+    <div class="content">
+      <div class="order">
+        <div class="body">
+          <h2 id="pricing-h" class="h h-2">One service. One price. No tiers.</h2>
+          <p class="lede" style="margin-top:22px">The price and scope are the same for every merchant. There is nothing to negotiate on a call and nothing hidden behind a form.</p>
+          <div class="over" style="margin-top:28px">
+            <strong>Have more than 500 products?</strong>
+            <p>We can prioritize up to 500 active or selected titles within the current service scope. Tell us how you would like to prioritize, or we can propose a selection for your approval.</p>
+          </div>
+        </div>
+        <div class="sheet" aria-label="Order sheet">
+          <span class="lab">Order sheet</span>
+          <dl>
+            <div class="row"><dt>Service</dt><span class="dots"></span><dd>Product Title Standardization</dd></div>
+            <div class="row"><dt>Scope</dt><span class="dots"></span><dd>up to 500 product titles</dd></div>
+            <div class="row"><dt>Billing</dt><span class="dots"></span><dd>one-time</dd></div>
+            <div class="row"><dt>Payment</dt><span class="dots"></span><dd>card · U.S. bank transfer</dd></div>
+            <div class="row total"><dt>Price</dt><span class="dots"></span><dd>$390<small>USD</small></dd></div>
+          </dl>
+          <ul class="inc" aria-label="Included">
+            <li>Catalog title review</li>
+            <li>Standardization rules</li>
+            <li>Merchant-decision flags</li>
+            <li>Application of approved title standards</li>
+            <li>Final QA</li>
+          </ul>
+          <a class="btn btn-ink" href="mailto:victor@catalogstandard.com?subject=Product%20Title%20Standardization">Get started</a>
+          <p class="pay">Payment details are confirmed by email before work begins.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" aria-labelledby="faq-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 07</span><span class="name">FAQ</span></div>
+    <div class="content">
+      <h2 id="faq-h" class="h h-2">Questions merchants ask before starting.</h2>
+      <div class="faq">
+        <details><summary><span class="n">Q1</span>What exactly do you change?<span class="x">+</span></summary><div class="a"><p>Product titles only. We review the titles in scope, propose a consistent naming standard, apply the rules you approve, and verify the result. Where a title needs a business decision, it is flagged for you rather than changed.</p></div></details>
+        <details><summary><span class="n">Q2</span>Do you change prices, inventory or SKUs?<span class="x">+</span></summary><div class="a"><p>No. Prices, inventory quantities, SKUs, barcodes, variants, variant structure, descriptions, SEO fields and image alt text are outside the editing scope of this service. Title scope means title scope.</p></div></details>
+        <details><summary><span class="n">Q3</span>What happens if a title requires a business decision?<span class="x">+</span></summary><div class="a"><p>It is flagged, not guessed. You see the question, choose the rule once, and we apply it consistently. Typical flags include brand placement, abbreviations, internal codes, and supplier naming that appears in more than one form.</p></div></details>
+        <details><summary><span class="n">Q4</span>Do you need access to my Shopify store?<span class="x">+</span></summary><div class="a"><p>Not always. The delivery workflow is confirmed in writing before work begins and depends on how you prefer to receive and apply the changes: a reviewed file for you to apply, or changes applied on your behalf under access you grant for the agreed scope.</p></div></details>
+        <details><summary><span class="n">Q5</span>What if I have more than 500 products?<span class="x">+</span></summary><div class="a"><p>The current service covers up to 500 active or prioritized product titles. You can tell us which titles matter most, or we can propose a selection for your approval before starting.</p></div></details>
+        <details><summary><span class="n">Q6</span>How much does it cost?<span class="x">+</span></summary><div class="a"><p>$390, one-time, for up to 500 product titles. There are no tiers, subscriptions or add-ons.</p></div></details>
+        <details><summary><span class="n">Q7</span>How do I pay?<span class="x">+</span></summary><div class="a"><p>Payment options include card and U.S. bank transfer. Payment details are confirmed by email before work begins.</p></div></details>
+        <details><summary><span class="n">Q8</span>How long does it take?<span class="x">+</span></summary><div class="a"><p>There is no fixed turnaround. The start date, delivery workflow and expected delivery date are confirmed in writing before work begins, based on catalog size, scope and how quickly flagged decisions are answered.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" aria-labelledby="contact-h">
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 08</span><span class="name">Contact</span></div>
+    <div class="content">
+      <div class="contact-grid">
+        <div class="body">
+          <h2 id="contact-h" class="h h-2">Ready to standardize your product titles?</h2>
+          <p class="lede" style="margin-top:22px">If you would like to confirm whether your catalog is a fit, email Victor directly. Questions before starting are fine — send the store URL and we will take it from there.</p>
+          <div class="sig" style="margin-top:28px;max-width:420px">
+            <span class="nm">Victor Moreira</span>
+            <span>Catalog Standard</span>
+            <span class="muted">Product Listing Standardization for Shopify</span>
+            <a href="mailto:victor@catalogstandard.com">victor@catalogstandard.com</a>
+            <!-- PUBLISH BLOCKER: insert owner-approved customer support phone before enabling card checkout.
+                 <a href="tel:+..." class="phone">+.. ... ... ....</a> -->
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-ink" href="mailto:victor@catalogstandard.com?subject=Product%20Title%20Standardization">Email Victor</a>
+          <p class="hint">Replies come from victor@catalogstandard.com. No forms, no automated sequences.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="rail" aria-hidden="true"><span class="idx">§ 09</span><span class="name">Colophon</span></div>
+    <div class="colophon">
+      <div class="brand">
+        <span class="wordmark">Catalog Standard</span>
+        <span class="lab">Catalog QA for Shopify</span>
+        <a href="mailto:victor@catalogstandard.com">victor@catalogstandard.com</a>
+        <!-- PUBLISH BLOCKER: insert owner-approved customer support phone before enabling card checkout.
+             <a href="tel:+..." class="phone">+.. ... ... ....</a> -->
+        <a href="https://catalogstandard.com/">catalogstandard.com</a>
+      </div>
+      <div class="legal">
+        <p class="op">Catalog Standard is operated by V M Silva Soluções Administrativas Ltda., a company registered in Brazil under CNPJ 51.364.944/0001-89.</p>
+        <address>Registered address: R Viaza, 400, Apt 1108, Jardim Aeroporto, São Paulo, SP 04633-050, Brazil</address>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-links">
+        <button type="button" data-open="terms">Terms of Service</button>
+        <button type="button" data-open="privacy">Privacy Policy</button>
+        <button type="button" data-open="refund">Refund &amp; Cancellation Policy</button>
+      </div>
+      <p>© <span id="year">2026</span> V M Silva Soluções Administrativas Ltda.</p>
+    </div>
+    <p class="tm">Shopify is a trademark of Shopify Inc. Catalog Standard is an independent service and is not affiliated with, endorsed by, or certified by Shopify Inc.</p>
+  </div>
+</footer>
+
+<!-- LEGAL: TERMS -->
+<dialog class="legal" id="dlg-terms" aria-labelledby="terms-h">
+  <div class="legal-head">
+    <h2 id="terms-h">Terms of Service</h2>
+    <button type="button" data-close aria-label="Close"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  </div>
+  <div class="legal-body">
+    <p class="eff">Version 1.0 · Effective September 2026</p>
+
+    <h3>1. Who we are</h3>
+    <p>Catalog Standard is a commercial brand of V M Silva Soluções Administrativas Ltda., a company registered in Brazil under CNPJ 51.364.944/0001-89, with registered address at R Viaza, 400, Apt 1108, Jardim Aeroporto, São Paulo, SP 04633-050, Brazil (“Catalog Standard”, “we”, “us”). These terms apply to any purchase of our services by you, the customer (“you”, “merchant”).</p>
+
+    <h3>2. Business customers</h3>
+    <p>Catalog Standard services are offered to merchants and other customers purchasing for business or professional purposes. Nothing in these terms limits any right or remedy that cannot lawfully be excluded or limited.</p>
+
+    <h3>3. The service</h3>
+    <p>The service currently offered is Product Title Standardization: a review of up to 500 product titles from your Shopify catalog, a proposed naming standard, identification of decisions that require your input, application of the rules you approve, and a final review of the result against the agreed scope. Where your catalog has more than 500 products, the scope is up to 500 active or prioritized product titles agreed with you in writing.</p>
+
+    <h3>4. Scope</h3>
+    <p>The service is limited to product titles. Prices, inventory quantities, SKUs, barcodes, product variants, variant structure, product descriptions, SEO fields, image alt text and any other catalog field are outside the editing scope of this service. We do not expand the scope of the work without a separate written agreement with you.</p>
+
+    <h3>5. Customer responsibilities</h3>
+    <ul>
+      <li>Provide accurate catalog information and the export or access needed for the agreed delivery workflow.</li>
+      <li>Confirm that you are authorized to request changes to the store in question.</li>
+      <li>Review the proposed standard and answer flagged decisions. The work cannot be completed until you do.</li>
+    </ul>
+
+    <h3>6. Merchant approval and flagged decisions</h3>
+    <p>The work follows five steps in order: catalog review, standard proposal, merchant approval and decisions, title standardization, final review. You approve the proposed naming standard in writing before any title is changed. Where a title depends on your business rules (for example brand placement, abbreviations, internal codes or supplier naming), it is flagged for your decision rather than assumed. Your approval and your answers to flagged decisions form the standard against which the delivered result is checked.</p>
+
+    <h3>7. Delivery workflow</h3>
+    <p>The start date, delivery workflow (for example a reviewed file for you to apply, or changes applied on your behalf under access you grant) and expected delivery date are confirmed in writing before work begins. Delivery dates depend on catalog size, scope and how quickly flagged decisions are answered. Any access you grant is used only for the agreed scope and is released when the work is complete.</p>
+
+    <h3>8. Price and payment</h3>
+    <p>The price is US$390, one-time, for the scope described above. Payment options include card and U.S. bank transfer, as confirmed by email. Unless otherwise agreed in writing, payment is due before work begins. Taxes, duties or bank charges that apply on your side are your responsibility.</p>
+
+    <h3>9. Cancellation and refunds</h3>
+    <p>Cancellation and refunds are governed by our Refund &amp; Cancellation Policy, which forms part of these terms.</p>
+
+    <h3>10. Corrections</h3>
+    <p>If delivered titles do not conform to the standard you approved, we correct the non-conforming titles at no additional service charge. Requests to change the standard itself after approval are a new scope and are agreed separately.</p>
+
+    <h3>11. Confidentiality</h3>
+    <p>Catalog data, store information and correspondence you share with us are used only to provide the service and are handled as described in our Privacy Policy. We do not use your catalog as a customer example or reference without your written permission.</p>
+
+    <h3>12. Reasonable professional care</h3>
+    <p>We perform the work with reasonable professional care and review the result against the approved scope before completion. Because the standard applied is the one you approve, decisions about naming conventions and their commercial effect remain yours.</p>
+
+    <h3>13. Limitation of liability</h3>
+    <p>To the extent permitted by applicable law, our total liability arising from or related to a service is limited to the amount you paid for that service, and we are not liable for indirect or consequential loss. Nothing in these terms limits liability that cannot lawfully be limited.</p>
+
+    <h3>14. Your data and our work product</h3>
+    <p>Your catalog and store data remain yours. The proposed standard, review notes and standardized titles delivered for your catalog are yours to use once the service is paid for. Our methods, templates and working documents remain ours.</p>
+
+    <h3>15. Shopify independence</h3>
+    <p>Shopify is a trademark of Shopify Inc. Catalog Standard is an independent service and is not affiliated with, endorsed by, or certified by Shopify Inc.</p>
+
+    <h3>16. Governing law</h3>
+    <p>These terms are governed by the laws of Brazil, without affecting any mandatory protection you may have under the law of your own jurisdiction.</p>
+
+    <h3>17. Contact</h3>
+    <p>Questions about these terms: victor@catalogstandard.com.</p>
+  </div>
+</dialog>
+
+<!-- LEGAL: PRIVACY -->
+<dialog class="legal" id="dlg-privacy" aria-labelledby="privacy-h">
+  <div class="legal-head">
+    <h2 id="privacy-h">Privacy Policy</h2>
+    <button type="button" data-close aria-label="Close"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  </div>
+  <div class="legal-body">
+    <p class="eff">Version 1.0 · Effective September 2026</p>
+    <p>This policy explains what information Catalog Standard (a brand of V M Silva Soluções Administrativas Ltda., São Paulo, Brazil) collects when you contact us or purchase a service, and how it is used.</p>
+
+    <h3>Information we process</h3>
+    <ul>
+      <li><strong>Contact data.</strong> Name, email address, store URL and the contents of messages you send us voluntarily.</li>
+      <li><strong>Catalog data.</strong> Product titles and related catalog information required to perform the agreed service. We request only what the agreed scope requires.</li>
+      <li><strong>Payment data.</strong> Card and bank details are processed by our payment providers. Catalog Standard does not store full card numbers or bank credentials. We may receive transaction confirmation and the information necessary for accounting and invoicing.</li>
+      <li><strong>Website.</strong> This website does not use analytics cookies or advertising trackers and does not load third-party fonts or scripts. Our hosting provider may keep standard server logs to operate and secure the site.</li>
+    </ul>
+
+    <h3>Why we process it</h3>
+    <ul>
+      <li>To respond to your enquiry and confirm whether your catalog is a fit.</li>
+      <li>To perform the service you purchased, including communicating about flagged merchant decisions.</li>
+      <li>To process and record payment and issue accounting records.</li>
+      <li>To meet legal obligations, and to protect our business and security interests where applicable.</li>
+    </ul>
+    <p>We do not send marketing sequences and do not sell or share your information for advertising.</p>
+
+    <h3>Service providers</h3>
+    <p>We share information only with the providers needed to operate — email, payment processing, file storage and hosting — and only to the extent actually needed to provide the service. Any store access you grant is used solely for the agreed scope and is released when the work is complete.</p>
+
+    <h3>International processing</h3>
+    <p>Catalog Standard operates from Brazil. Information you send may be processed in Brazil and in the countries where our service providers operate. We apply reasonable safeguards regardless of location.</p>
+
+    <h3>Retention</h3>
+    <p>We keep information for as long as needed to provide and support the service, to keep the accounting and legal records we are required to keep, to handle any dispute, and for legitimate operational needs. Catalog data is deleted or returned on request once those needs no longer apply.</p>
+
+    <h3>Your rights</h3>
+    <p>You may contact us to request access, correction, deletion, or other action concerning personal information we hold about you. Requests are handled in accordance with applicable data-protection law, including Brazil’s LGPD where applicable.</p>
+
+    <h3>Privacy contact</h3>
+    <p>victor@catalogstandard.com</p>
+  </div>
+</dialog>
+
+<!-- LEGAL: REFUND -->
+<dialog class="legal" id="dlg-refund" aria-labelledby="refund-h">
+  <div class="legal-head">
+    <h2 id="refund-h">Refund &amp; Cancellation Policy</h2>
+    <button type="button" data-close aria-label="Close"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  </div>
+  <div class="legal-body">
+    <p class="eff">Version 1.0 · Effective September 2026</p>
+    <p>Product Title Standardization is a one-time professional service delivered in stages. Whether a refund applies depends on the stage the work has reached when you cancel.</p>
+
+    <h3>Before catalog review begins</h3>
+    <p>If you cancel before Catalog Standard begins the catalog review, we refund 100% of the service amount paid to the original payment method. We do not deduct card-processing fees from this refund.</p>
+
+    <h3>After catalog review begins, before you approve the standard</h3>
+    <p>If you cancel after the catalog review has begun but before you approve the proposed title standard, we refund 50% of the service amount paid. The remaining 50% compensates the review, pattern analysis and standard-development work already performed.</p>
+
+    <h3>After you approve the standard</h3>
+    <p>Once you approve the proposed standard and title-standardization work begins, the service is non-refundable, because the principal implementation phase has started. If the delivered titles do not conform to the standard you approved, Catalog Standard corrects the non-conforming titles at no additional service charge.</p>
+
+    <h3>Open decisions</h3>
+    <p>Flagged decisions that stay unanswered pause the work at its current stage. They do not by themselves change the stage reached for the purposes of this policy.</p>
+
+    <h3>How to cancel</h3>
+    <p>Send your cancellation request to victor@catalogstandard.com from the email address associated with the order. Refunds are returned through the original payment method where practicable; timing depends on the payment provider and your bank.</p>
+
+    <h3>Mandatory rights</h3>
+    <p>Nothing in this policy limits any refund, cancellation, or other right that cannot lawfully be excluded under applicable law.</p>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var d=document.getElementById('dlg-'+b.getAttribute('data-open'));
+      if(!d) return;
+      d.__opener=b;
+      if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');
+      var body=d.querySelector('.legal-body'); if(body) body.scrollTop=0;
+    });
+  });
+  document.querySelectorAll('dialog.legal').forEach(function(d){
+    d.querySelector('[data-close]').addEventListener('click',function(){d.close();});
+    d.addEventListener('close',function(){ if(d.__opener&&d.__opener.focus) d.__opener.focus(); });
+    d.addEventListener('click',function(e){
+      var r=d.getBoundingClientRect();
+      if(!(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)) d.close();
+    });
+  });
+  var y=document.getElementById('year'); if(y) y.textContent=String(new Date().getFullYear());
+})();
+</script>
+</body>
+</html>
